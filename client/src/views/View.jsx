@@ -9,14 +9,17 @@ const View = (props) => {
 	const [productErrors, setProductErrors] = useState([]);
 	const [allProducts, setAllProducts] = useState([]);
 
+	const [refresh, setRefresh] = useState(false);
+
 	useEffect(() => {
 		axios.get('http://localhost:8000/api/all')
 			.then(res => {
 				setAllProducts(res.data)
-				// console.log(res.data)
+				setRefresh(false)
+				console.log(res.data)
 			})
 			.catch(err => console.log(err))
-	}, [])
+	}, [refresh])
 
 	const createProduct = (e) => {
 		e.preventDefault();
@@ -25,8 +28,8 @@ const View = (props) => {
 			quantity
 		})
 			.then(res => {
-				// console.log(res)
-				window.location.reload()
+				console.log(res)
+				setRefresh(true)
 			})
 			.catch(err => {
 				const errorResponse = err.response.data.errors
@@ -37,6 +40,7 @@ const View = (props) => {
 				setProductErrors(errArr)
 				setProductName("")
 				setQuantity(0)
+				
 			})
 	}
 
@@ -73,7 +77,7 @@ const View = (props) => {
 				}
 			}
 		}
-		window.location.reload()
+		setRefresh(true)
 	}
 
 	const updateProduct = (product, amnt, mult) => {
@@ -83,6 +87,7 @@ const View = (props) => {
 		})
 			.then(res => {
 				console.log(res)
+				setRefresh(true)
 			})
 			.catch(err => console.log(err))
 	}

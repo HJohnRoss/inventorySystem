@@ -15,16 +15,19 @@ const Add = (props) => {
 	const [productName, setProductName] = useState(null)
 	const [productQty, setProductQty] = useState(null)
 
+	const [refresh, setRefresh] = useState(false);
+
 	useEffect(() => {
 		axios.get(`http://localhost:8000/api/${id}`)
 			.then(res => {
 				setProduct(res.data)
 				setProductName(res.data.productName)
 				setProductQty(res.data.quantity)
+				setRefresh(false)
 				console.log(res.data)
 			})
 			.catch(err => console.log(err))
-	}, [])
+	}, [refresh])
 
 	const updateProduct = (e, isEdit) => {
 		e.preventDefault();
@@ -121,7 +124,7 @@ const Add = (props) => {
 
 							{
 								product.skus.map((sku, i) =>
-									<TableData sku={sku} i={i} product={product} />
+									<TableData sku={sku} i={i} product={product} setRefresh={setRefresh} />
 								)
 							}
 						</div>

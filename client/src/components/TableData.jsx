@@ -9,6 +9,8 @@ const TableData = (props) => {
 	const [qty, setQty] = useState(props.sku.qty);
 	const [channel, setChannel] = useState(props.sku.sellingChannel)
 
+	const [refresh, setRefresh] = useState(false);
+
 	const handleEdit = (e) => {
 		e.preventDefault()
 		if (edit) {
@@ -33,7 +35,7 @@ const TableData = (props) => {
 			.then(res => {
 				console.log(res.data)
 				setEdit(false)
-				window.location.reload()
+				props.setRefresh(true)
 			})
 			.catch(err => console.log(err))
 	}
