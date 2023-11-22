@@ -1,0 +1,42 @@
+.add {
+	min-height: 100vh;
+	min-width: 100vw;
+	background-color: $color-dark;
+
+	&--link {
+		text-decoration: none;
+		color: $color-primary;
+		padding: .5rem 1rem;
+		margin-bottom: 1rem;
+		background-color: $color-secondary;
+		border-radius: 1rem;
+		display: block;
+		width: fit-content;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: center;
+		gap: 5rem;
+	}
+
+	&__table {
+		text-align: center;
+		max-width: 75vw;
+		margin: 0 auto;
+		margin-top: 3rem;
+
+		&--header, &--row {
+			display: flex;
+		}
+
+		&--col {
+			flex: 1; 
+			padding: .8rem;
+			border: 1px solid $color-secondary;
+			border-collapse: collapse;
+			background-color: $color-primary;
+		}
+
+	}
+}

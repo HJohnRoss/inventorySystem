@@ -1,0 +1,45 @@
+.view {
+	min-height: 100vh;
+	min-width: 100vw;
+	background-color: $color-dark;
+
+	&--link {
+		text-decoration: none;
+		color: $color-primary;
+		padding: .5rem 1rem;
+		margin-bottom: 1rem;
+		background-color: $color-secondary;
+		border-radius: 1rem;
+		display: block;
+		width: fit-content;
+	}
+
+	&__forms {
+		display: flex;
+		justify-content: space-evenly;
+		padding-top: 3rem;
+	}
+
+	&__table {
+		background-color: $color-primary;
+		margin: 0 auto;
+		margin-top: 2rem;
+		text-align: center;
+		width: 75vw;
+		border-collapse: collapse;
+		
+		&--tr {
+			border: 1px solid $color-secondary-dark;
+		}
+		
+		&--th {
+			border: 1px solid $color-secondary-dark;
+			padding: 1rem;
+		}
+		
+		&--td {
+			border: 1px solid $color-secondary-dark;
+			padding: 1rem;
+		}
+	}
+}
